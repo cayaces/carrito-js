@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rincón Parrillero</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <header>
+        <h1> El Rincon Parrillero </h1>
+    </header>
+    <section class="contenedor">
+        <!--contenedor de los elementos-->
+        <div id="contenedor-productos" class="contenedor-items">
+        </div>
+
+        <!--carrito de compras-->
+        <div id="bolsa-vacia" class="carrito-compras">
+            <div class="header-carrito">
+                <h2>Agregados a Tu Bolsa</h2>
+            </div>
+
+            <div id="bolsa-productos" class="carrito-items-compras">
+                <div class="carrito-item">
+                    <img src="./img/cuchilloprofesional-new.jpg" alt="foto" width="80px">
+                    <div class="carrito-item-detalles">
+                        <span class="carrito-item-titulo">Cuchillo Profesional</span>
+                        <div class="selector-cantidad">
+                            <i class="bi bi-dash restar-cantidad"></i>
+                            <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                            <i class="bi bi-plus sumar-cantidad"></i>
+                        </div>
+                        <span class="carrito-item-precio">$10.000</span>
+                    </div>
+                    <span id="${producto.id}" class="btn-eliminar">
+                        <i class="bi bi-trash2"></i>
+                    </span>
+                </div>
+
+                <div class="carrito-item">
+                    <img src="./img/cuchillosantoku-new.jpg" alt="foto" width="80px">
+                    <div class="carrito-item-detalles">
+                        <span class="carrito-item-titulo">Cuchillo Santoku</span>
+                        <div class="selector-cantidad">
+                            <i class="bi bi-dash restar-cantidad"></i>
+                            <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                            <i class="bi bi-plus sumar-cantidad"></i>
+                        </div>
+                        <span class="carrito-item-precio">$15.000</span>
+                    </div>
+                    <span id="${producto.id}" class="btn-eliminar">
+                        <i class="bi bi-trash2"></i>
+                    </span>
+                </div>
+
+                <div class="carrito-item">
+                    <img src="./img/set-cuchillos-new.jpg" alt="foto" width="80px">
+                    <div class="carrito-item-detalles">
+                        <span class="carrito-item-titulo">Set de Cuchillos</span>
+                        <div class="selector-cantidad">
+                            <i class="bi bi-dash restar-cantidad"></i>
+                            <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                            <i class="bi bi-plus sumar-cantidad"></i>
+                        </div>
+                        <span class="carrito-item-precio">$25.000</span>
+                    </div>
+                    <span id="${producto.id}" class="btn-eliminar">
+                        <i class="bi bi-trash2"></i>
+                    </span>
+                </div>
+
+                <div class="carrito-item">
+                    <img src="./img/Set-tabla48cms-cuchillo-tenedor-new.jpg" alt="foto" width="80px">
+                    <div class="carrito-item-detalles">
+                        <span class="carrito-item-titulo">Set Parrillero</span>
+                        <div class="selector-cantidad">
+                            <i class="bi bi-dash restar-cantidad"></i>
+                            <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                            <i class="bi bi-plus sumar-cantidad"></i>
+                        </div>
+                        <span class="carrito-item-precio">$35.000</span>
+                    </div>
+                    <span id="${producto.id}" class="btn-eliminar">
+                        <i class="bi bi-trash2"></i>
+                    </span>
+                </div>
+
+                <div class="carrito-item">
+                    <img src="./img/tabla2-40cms-new.jpg" alt="foto" width="80px">
+                    <div class="carrito-item-detalles">
+                        <span class="carrito-item-titulo">Tabla 40 cms.</span>
+                        <div class="selector-cantidad">
+                            <i class="bi bi-dash restar-cantidad"></i>
+                            <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                            <i class="bi bi-plus sumar-cantidad"></i>
+                        </div>
+                        <span class="carrito-item-precio">$25.000</span>
+                    </div>
+                    <span id="${producto.id}" class="btn-eliminar">
+                        <i class="bi bi-trash2"></i>
+                    </span>
+                </div>
+
+                <div class="carrito-item">
+                    <img src="./img/tablaparacortar-38cm-new.jpg" alt="foto" width="80px">
+                    <div class="carrito-item-detalles">
+                        <span class="carrito-item-titulo">Tabla 38 cms</span>
+                        <div class="selector-cantidad">
+                            <i class="bi bi-dash restar-cantidad"></i>
+                            <input type="text" value="1" class="carrito-item-cantidad" disabled>
+                            <i class="bi bi-plus sumar-cantidad"></i>
+                        </div>
+                        <span class="carrito-item-precio">$20.000</span>
+                    </div>
+                    <span id="${producto.id}" class="btn-eliminar">
+                        <i class="bi bi-trash2"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div id="bolsa-total" class="carrito-total">
+                <div class="fila">
+                    <strong>Tu total</strong>
+                    <span class="carrito-precio-total">
+                        Total: <span id="total">$0</span>
+                    </span>
+                </div>
+                <button id="numeritoBolsa" class="btn-pagar">Pagar<i class="bi bi-bag-fill"></i></button>
+            </div>
+        </div>
+
+    </section>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>

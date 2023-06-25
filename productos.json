@@ -1,0 +1,38 @@
+[
+    {
+       "id": "cuchilloprofesional",
+        "titulo": "Cuchillo Profesional",
+        "img": "./img/cuchilloprofesional-new.jpg",
+        "precio": 10000
+    },
+    {
+       "id": "cuchillosantoku",
+        "titulo": "Cuchillo Santoku",
+        "img": "./img/cuchillosantoku-new.jpg",
+        "precio": 15000
+    },
+    {
+       "id": "set-cuchillos-new",
+        "titulo": "Set de Cuchillos",
+        "img": "./img/set-cuchillos-new.jpg",
+        "precio": 25000
+    },
+    {
+       "id": "setparrillero",
+        "titulo": "Set Parrillero",
+        "img": "./img/Set-tabla48cms-cuchillo-tenedor-new.jpg",
+        "precio": 35000
+    },
+    {
+       "id": "tabla40cms",
+        "titulo": "Tabla 40 cms.",
+        "img": "./img/tabla2-40cms-new.jpg",
+        "precio": 25000
+    },
+    {
+       "id": "tabla38cms",
+        "titulo": "Tabla 38 cms.",
+        "img": "./img/tablaparacortar-38cm-new.jpg",
+        "precio": 20000
+    }
+]
