@@ -1,12 +1,19 @@
 let carrito = [];
 let productos = document.querySelector("#contenedor-productos");
 let bolsaProductosClass = document.querySelector(".carrito-items-compras")
-fetch("./productos.json")
+/*fetch("./productos.json")
     .then(response => response.json())
     .then(data => {
         productos = data;
         marcarProductos(productos);
-    });
+        agregarBolsa(productos);
+    });*/
+    const productosData = "./productos.json"
+    async function getData() {
+        const res = await fetch(productosData);
+        const data = await res.json();
+        return data;
+    }
 
 
 // DOM
@@ -17,11 +24,11 @@ const botonesBolsa = document.querySelectorAll(".carrito-item"); //3 AGREGADOS A
 const numeritoBolsa = document.querySelector("#numeritoBolsa"); //4
 const cantidadBoton = document.querySelector("#cantidad-btn");
 
-function marcarProductos(productos) {  //1 ID TARJETAS DE PRODUCTOS - ARRAY
-
+async function marcarProductos() {  //1 ID TARJETAS DE PRODUCTOS - ARRAY
+const dataBase = await getData()
     contenedorProductos.innerHTML = "";
 
-    productos.forEach(producto => {
+    dataBase.forEach(producto => {
         let div = document.createElement("div");
         div.className = "item";
         div.innerHTML = `
@@ -29,14 +36,14 @@ function marcarProductos(productos) {  //1 ID TARJETAS DE PRODUCTOS - ARRAY
                              <img class="img-items" src="${producto.img}" alt="
                              ${producto.titulo}" >
                              <span class="precio-item">$${producto.precio}</span>
-                             <button id="btn-agregar" class="boton-item" id="${producto.id}">Agregar</button> 
+                             <button  class="boton-item" id="${producto.id}">Agregar</button> 
                         `;
         //2 BOTON AGREGAR DE LA TARJETA
         contenedorProductos.appendChild(div);
     })
     actualizarBotonItemAgregar();
 }
-
+window.onload = marcarProductos();
 
 //3 AGREGADOS A TU BOLSA - FOREACH BOTON
 botonesBolsa.forEach(boton => {
@@ -89,7 +96,7 @@ if (productosEnBolsa) {
 }
 
 
-function agregarBolsa(e) {
+async function agregarBolsa(e) {
 
     Toastify({
         text: "PRODUCTO AGREGADO A LA BOLSA",
@@ -104,18 +111,20 @@ function agregarBolsa(e) {
     }).showToast();
 
     const idBoton = e.currentTarget.id;
-    let carrito = [];
-    const productoAgregado = productos.find(producto => producto.id === idBoton);
-    if (carrito.some(producto => producto.id === idBoton)) {
+    const dataBaseProducto = await getData();
+    
+   
+    const productoAgregado = carrito.some(producto => producto.id === idBoton);
+    if (productoAgregado) {
         const index = carrito.findIndex(producto => producto.id === idBoton);
         carrito[index].unidades++;
     } else {
         
-        const productoAgregado = productos.find(producto => producto.id === idBoton);
+        const productoAgregado = dataBaseProducto.find(producto => producto.id === idBoton);
         productoAgregado.unidades = 1;
         carrito.push(productoAgregado);
     }
-
+    cargarProductosBolsa();
     numeroBolsa();
     localStorage.setItem("productos-bolsa", JSON.stringify(carrito));
 }
